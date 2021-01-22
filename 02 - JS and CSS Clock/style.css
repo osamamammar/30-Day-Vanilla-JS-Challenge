@@ -1,0 +1,73 @@
+html {
+  background: #8e9eab; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #eef2f3,
+    #8e9eab
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #eef2f3,
+    #8e9eab
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  font-family: "helvetica neue";
+  text-align: center;
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.clock {
+  width: 30rem;
+  height: 30rem;
+  border: 20px solid white;
+  border-radius: 50%;
+  margin: 50px auto;
+  position: relative;
+  padding: 2rem;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+    inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px); /* account for the height of the clock hands */
+}
+
+.hand {
+  width: 50%;
+  height: 6px;
+  background: black;
+  position: absolute;
+  border-radius: 60%;
+  top: 50%;
+  transform-origin: 100%;
+  transform: rotate(90deg);
+  transition: all 0.05s;
+  transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+}
+/* Styling each hand differently */
+.min-hand {
+  height: 8px;
+}
+
+.hour-hand {
+  height: 8px;
+  width: 30%;
+  right: 50%;
+}
+.second-hand {
+  background: rgb(117, 22, 22);
+  width: 40%;
+  right: 50%;
+}
