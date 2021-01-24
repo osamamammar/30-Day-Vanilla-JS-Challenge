@@ -101,13 +101,17 @@
       // 5. Sort the inventors by years lived
       const longLive = inventors.sort((a, b) => {
         a.passed - a.year > b.passed - b.year ? 1 : -1;
-      }, 0);
+      });
       console.log(longLive);
 
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+      // ***Convert NodeList****To an Array***
+      // 1-
       // const links = Array.from(document.querySelectorAll(".mw-category a"));
+      // 2-
+      // const links = [...document.querySelectorAll(".mw-category a")];
       // const de = links
       //   .map((links) => links.textContent)
       //   .filter((streetName) => streetName.includes("de"));
@@ -141,6 +145,7 @@
         "truck",
         "osama",
       ];
+
       // First Solution>>>>>
       // const counter = data.reduce((obj, type) => {
       //   if (type in obj) {
@@ -151,6 +156,7 @@
       //   return obj;
       // }, {});
       // console.log(counter);
+
       // Second Solution>>>>>>
       const counter = data.reduce((obj, type) => {
         if (!obj[type]) {
