@@ -4,8 +4,7 @@ const endpoint =
 const cities = [];
 fetch(endpoint)
   .then((response) => response.json())
-  .then((data) => cities.push(data));
-
+  .then((data) => cities.push(...data));
 function findMatches(wordToMatch, cities) {
   return cities.filter((place) => {
     //Is the city or state match for the search?
@@ -13,20 +12,27 @@ function findMatches(wordToMatch, cities) {
     return place.city.match(regex) || place.state.match(regex);
   });
 }
+
 //Format Population Numbers
 function numberWithCommas(x) {
-  return x.toString().replace(/B(?=(d{3})+(?!d))/g, ",");
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
 function displayMatches() {
   const matchArray = findMatches(this.value, cities);
   const html = matchArray
     .map((place) => {
       //Find the user input & highlight it on the results
       const regex = new RegExp(this.value, "gi");
-      const cityName = place.city.replace(regex, `${this.value}`);
-      const stateName = place.state.replace(regex, `${this.value}`);
-
-      return `
+      const cityName = place.city.replace(
+        regex,
+        `<span class="hl">${this.value}</span>`
+      );
+      const stateName = place.state.replace(
+        regex,
+        `<span class="hl">${this.value}</span>`
+      );
+      return ` 
       <li>
       <span class="name">${cityName}, ${stateName}</span>
       <span class="population"> ${numberWithCommas(place.population)}</span>
